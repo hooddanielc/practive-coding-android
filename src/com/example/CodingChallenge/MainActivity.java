@@ -53,6 +53,21 @@ public class MainActivity extends Activity {
           try {
             JSONObject object = new JSONObject(result);
             JSONArray caseStudies = object.getJSONArray("casestudies");
+
+            for (int i = 0; i < caseStudies.length(); ++i) {
+              // inflate the layout to a view
+              JSONObject item = caseStudies.getJSONObject(i);
+              String name = item.getString("name");
+              String icon = item.getString("icon");
+              String url = item.getString("url");
+
+              Log.v("SHCE", "======================");
+              Log.v("SHCE", name);
+              Log.v("SHCE", url);
+              Log.v("SHCE", icon);
+
+              // append the view to list item
+            }
           } catch (Exception e) {
             Log.v("SHCE", "Could not parse json, it is malformed");
           }
